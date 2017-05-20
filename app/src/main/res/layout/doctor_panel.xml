@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
   <TextView
+      android:id="@+id/txt_add_pat"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="15dp"
@@ -14,6 +15,7 @@
       android:textSize="20dp" />
 
   <TextView
+      android:id="@+id/txt_vp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="16dp"
@@ -22,6 +24,7 @@
       android:textSize="20dp" />
 
   <TextView
+      android:id="@+id/txt_up_info"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="16dp"
@@ -30,6 +33,7 @@
       android:textSize="20dp" />
 
   <TextView
+      android:id="@+id/txt_lst_pat"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="16dp"

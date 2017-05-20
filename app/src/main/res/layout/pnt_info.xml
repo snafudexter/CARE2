@@ -8,7 +8,6 @@
   <EditText
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="NAME"
       android:textSize="25dp"
       android:padding="10dp"
       android:hint="Enter name"
@@ -17,16 +16,17 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AGE"
         android:padding="10dp"
         android:hint="Enter the age"
+        android:inputType="number"
         android:textSize="25dp"
         android:id="@+id/age"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mobile number"
+        android:hint="Mobile number"
+        android:inputType="number"
         android:padding="10dp"
         android:textSize="25dp"
         android:id="@+id/et_num"
@@ -34,7 +34,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weight"
+        android:hint="Weight"
+        android:inputType="number"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_wt"
@@ -42,7 +43,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Height"
+        android:hint="Height in cms"
+        android:inputType="number"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_ht"
@@ -50,7 +52,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email Address"
+        android:hint="Email Address"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_id"
@@ -58,7 +60,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Blood Pressure"
+        android:hint="Blood Pressure"
+        android:inputType="number"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_bp"
@@ -66,7 +69,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Diabetes"
+        android:hint="Diabetes"
+        android:inputType="number"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_db"
@@ -74,7 +78,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Disease/Problems"
+        android:hint="Disease/Problems"
         android:textSize="25dp"
         android:padding="10dp"
         android:id="@+id/et_dp"

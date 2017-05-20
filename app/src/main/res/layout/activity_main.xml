@@ -19,12 +19,12 @@
         />
 
     <EditText
+        android:id="@+id/et_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:id="@+id/et_login"
         android:hint="Enter your id"
-        />
+        android:padding="16dp"
+        android:text="prabh@live.in" />
 
     <TextView
         android:layout_width="match_parent"
@@ -33,13 +33,14 @@
         android:text="Password"
         android:textColor="@color/colorAccent"
         android:textSize="30dp" />
+
     <EditText
+        android:id="@+id/et_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:id="@+id/et_pwd"
         android:padding="16dp"
-        />
+        android:text="parker" />
 
     <Button
         android:id="@+id/bt_login"

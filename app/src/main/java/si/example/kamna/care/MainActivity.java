@@ -1,8 +1,10 @@
 package si.example.kamna.care;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText et_login, et_pwd;
     Button bt_login;
     Context mContext;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mContext=this;
 
-        bt_login= (Button) findViewById(R.id.bt_login);
-        ;
+        dbHelper = new DBHelper(this, "caredb", null, 3);
+        dbHelper.insertDoc("prabh@live.in", "parker");
 
-        et_login= (EditText) findViewById(R.id.et_id);
+        bt_login= (Button) findViewById(R.id.bt_login);
+
+
+        et_login= (EditText) findViewById(R.id.et_login);
         et_pwd= (EditText) findViewById(R.id.et_pwd);
 
         bt_login.setOnClickListener(this);
@@ -35,37 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this,"Start call",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume() {
-        Toast.makeText(this,"Resume call",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onPause() {
-
-        Toast.makeText(this,"Pause call",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop() {
-        Toast.makeText(this,"Stop call",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onRestart() {
-        Toast.makeText(this,"Restart call",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        Toast.makeText(this,"Destroy call",Toast.LENGTH_SHORT).show();
-    }
 
 
     @Override
@@ -78,32 +53,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String pwd_val=et_pwd.getText().toString().trim();
                 if((id_val.length() > 0 ) && (pwd_val.length() >0 ))
                 {
-
-                    if(id_val.equals("admin") && pwd_val.equals("admin"))
+                    Cursor cursor = dbHelper.getDoc(id_val);
+                    cursor.moveToFirst();
+                    int c = cursor.getCount();
+                    if(cursor.getCount()> 0)
                     {
-                        Intent intent=new Intent(mContext,AfterLogin.class);
+                        String ps = cursor.getString(cursor.getColumnIndex("pass"));
+                        if( ps.compareTo(pwd_val) == 0)
+                        {
+                            Intent i = new Intent(this, DoctorPanel.class);
 
-                        Bundle bundle_var=new Bundle();
-                        bundle_var.putString("name_key","Kamna");
-                        bundle_var.putString("qual_key","abc");
-                        bundle_var.putString("marks_key","123");
-
-                        intent.putExtra("bundle",bundle_var);
-
-                        startActivity(intent);
-                    }else{
-                        //  Toast.makeText(mContext,"Invalid credentials",Toast.LENGTH_SHORT).show();
-                        et_login.setError("Invalid credentials");
-                        et_pwd.setError("Invalid credentials");
-
-
-                        //Show message invalid credentials
+                            Bundle b = new Bundle();
+                            b.putInt("doc_id", cursor.getInt(cursor.getColumnIndex("id")));
+                            i.putExtras(b);
+                            startActivity(i);
+                            finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }else{
-                    Log.d("value","check");
-                    Toast.makeText(mContext,"Fill the fields first",Toast.LENGTH_SHORT).show();
-                    //Show message to fill the fields first
-                }
+                    }
+
                 break;
         }
 

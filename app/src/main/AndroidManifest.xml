@@ -22,6 +22,16 @@
                     />
             </intent-filter>
         </activity>
+        <activity android:name=".DoctorPanel">
+
+        </activity>
+        <activity android:name=".AddPatient">
+
+        </activity>
+        <activity android:name=".ViewPatient">
+
+        </activity>
+
     </application>
 
 </manifest>
